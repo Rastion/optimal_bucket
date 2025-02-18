@@ -1,0 +1,36 @@
+{
+    "entry_point": "bucket_optimization_problem:BucketOptimizationProblem",
+    "default_params": {},
+    "problem_type": "Bucket Optimization",
+    "description": "Given a fixed amount of material (the area of a unit disc, π), design a bucket defined by its bottom radius (r), top radius (R), and height (h) such that the material used (computed as S = π*r² + π*(R+r)*sqrt((R-r)²+h²)) does not exceed π, while the bucket's volume V = (π*h)/3*(R²+R*r+r²) is maximized.",
+    "keywords": [
+      "bucket design",
+      "optimization",
+      "maximization",
+      "geometry",
+      "mathematics"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "No instance file is required; the problem is fully defined by the available material (π) and the three decision variables (R, r, h)."
+      }
+    },
+    "decision_variables": {
+      "bucket_dimensions": {
+        "type": "dictionary",
+        "description": "A dictionary with keys 'R', 'r', and 'h' representing the top opening radius, bottom radius, and height of the bucket, respectively."
+      }
+    },
+    "objective": {
+      "type": "maximization",
+      "function": "Volume = (π * h)/3 * (R² + R*r + r²)",
+      "description": "Maximize the bucket's volume, subject to the constraint that the total surface area used (π*r² + π*(R+r)*sqrt((R-r)²+h²)) does not exceed π."
+    },
+    "solution_representation": "A dictionary with keys 'R', 'r', and 'h'.",
+    "compatible_optimizers": [
+      "gradient_descent",
+      "genetic_algorithm",
+      "simulated_annealing"
+    ]
+  }
+  
